@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  reverse-proxy:
+    container_name: reverse-proxy
+    image: reverse-proxy
+    build:
+      context: .
+      dockerfile: reverse-proxy/Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - local
+
+networks:
+  local:
+
+volumes:
+  data:
